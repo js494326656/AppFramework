@@ -45,7 +45,7 @@ public class NetBuilder {
         void setNetListener(INetListener netListener) {
             mNetListener = netListener;
         }
-        interface INetListener{
+        public interface INetListener{
             void netBegin();
             void netEnd();
         }
