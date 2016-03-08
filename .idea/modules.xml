@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/AppFramework.iml" filepath="$PROJECT_DIR$/AppFramework.iml" />
       <module fileurl="file://$PROJECT_DIR$/JsAppPro.iml" filepath="$PROJECT_DIR$/JsAppPro.iml" />
       <module fileurl="file://$PROJECT_DIR$/aoplibrary/aoplibrary.iml" filepath="$PROJECT_DIR$/aoplibrary/aoplibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aoplibrary/aoplibrary.iml" filepath="$PROJECT_DIR$/aoplibrary/aoplibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/utils/utils.iml" filepath="$PROJECT_DIR$/utils/utils.iml" />
       <module fileurl="file://$PROJECT_DIR$/utils/utils.iml" filepath="$PROJECT_DIR$/utils/utils.iml" />
     </modules>
   </component>
