@@ -27,4 +27,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="ticker demo"/>
+
+    <Button
+        android:id="@+id/navigation_demo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="navigation demo"/>
 </LinearLayout>

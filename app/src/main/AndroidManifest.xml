@@ -16,9 +16,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".netedgetest.WelcomeActivity" />
-        <activity android:name=".tickertest.TickerActivity"></activity>
+        <activity android:name=".tickertest.TickerActivity" />
         <activity android:name=".eventtest.CallerActivity" />
-        <activity android:name=".eventtest.ServerActivity"></activity>
+        <activity android:name=".eventtest.ServerActivity" />
+        <activity android:name=".NavigationActivity"
+            android:theme="@style/Base.Theme.DesignDemo"></activity>
     </application>
 
 </manifest>

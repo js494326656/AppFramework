@@ -34,4 +34,9 @@ public class MainActivity extends AppCompatActivity {
     public void tickerDemo() {
        startActivity(new Intent(this, TickerActivity.class));
     }
+
+    @OnClick(R.id.navigation_demo)
+    public void navigationDemo() {
+        startActivity(new Intent(this,NavigationActivity.class));
+    }
 }

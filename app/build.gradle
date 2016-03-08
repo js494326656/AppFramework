@@ -41,4 +41,5 @@ dependencies {
     compile project(':aoplibrary')
     compile project(':eventpass')
     compile project(':utils')
+    compile 'com.android.support:design:23.2.0'
 }
