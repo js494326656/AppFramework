@@ -4,6 +4,8 @@ import java.util.concurrent.TimeUnit;
 
 import rx.Observable;
 import rx.Scheduler;
+import rx.Subscriber;
+import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
@@ -13,18 +15,19 @@ import rx.schedulers.Schedulers;
  */
 public class RxTicker {
 
-    public static <T,R> Observable<T> tick(Observable<T> src){
-//        return src.flatMap((Func1<? super T, ? extends Observable<? extends R>>) (Func1<T, Observable<?>>) t -> {
-//            try {
-//                Thread.sleep(500);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-//            return Observable.just(t);
-//        });
+    private static final int DELAY = 5;
 
+    public static  <T> Observable<T> tick(Observable<T> src,int delay){
         return src.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
-                .delay(5, TimeUnit.SECONDS).repeat();
+                .delay(delay, TimeUnit.SECONDS).repeat();
+    }
+
+    public static <T> Observable<T> tick(Observable<T> src){
+        return tick(src, DELAY);
+    }
+
+    public static void cancelTick(Subscription subscription){
+        subscription.unsubscribe();
     }
 
 }

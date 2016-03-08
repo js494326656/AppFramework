@@ -1,8 +1,8 @@
-package com.jsware.eventpass;
+package com.eventpass;
 
 import android.content.Intent;
 
-import com.jsware.eventpass.annotation.Receiver;
+import com.eventpass.annotation.Receiver;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -25,7 +25,7 @@ public class EventManager {
 
         Class<?> listenerClass = object.getClass();
         if (handlersByServer.get(listenerClass) == null){
-            handlersByServer.put(listenerClass,new HashMap<>());
+            handlersByServer.put(listenerClass,new HashMap<Integer,Map<Integer,EventHandler>>());
         }
         Map<Integer,Map<Integer,EventHandler>> handlerMap = handlersByServer.get(listenerClass);
         for (Method method : listenerClass.getDeclaredMethods()) {
@@ -47,7 +47,7 @@ public class EventManager {
         }
         Class<?> listenerClass = object.getClass();
         if (handlersByServer.get(listenerClass) != null){
-            handlersByServer.put(listenerClass,new HashMap<>());
+            handlersByServer.put(listenerClass,new HashMap<Integer,Map<Integer,EventHandler>>());
         }
     }
 

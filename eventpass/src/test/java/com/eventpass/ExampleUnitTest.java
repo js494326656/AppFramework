@@ -1,4 +1,4 @@
-package com.jsware.eventpass;
+package com.eventpass;
 
 import org.junit.Test;
 
