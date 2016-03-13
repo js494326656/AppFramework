@@ -3,8 +3,10 @@ package com.jsware.tickertest;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.jsware.R;
+import com.utils.behavior.ToastUtil;
 import com.utils.datahelper.RxTicker;
 
 import butterknife.ButterKnife;
@@ -46,6 +48,7 @@ public class TickerActivity extends AppCompatActivity {
     }
 
     private void handleMsg(String msg){
+        ToastUtil.show(this,msg);
         Log.i(TAG, msg);
     }
 }
