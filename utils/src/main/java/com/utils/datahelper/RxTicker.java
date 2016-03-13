@@ -15,7 +15,7 @@ import rx.schedulers.Schedulers;
  */
 public class RxTicker {
 
-    private static final int DELAY = 10;
+    private static final int DELAY = 5;
 
     public static  <T> Observable<T> tick(Observable<T> src,int delay){
         return src.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
