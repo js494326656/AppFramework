@@ -30,6 +30,7 @@ public class CleanableEditText extends RelativeLayout {
     int inputType = EditorInfo.IME_NULL;
     int maxLength = -1;
     String hint = "";
+    int drawPadding = 10;
 
     private Drawable mLeftDrawable,mRightDrawable;
     private boolean isHasFocus;
@@ -89,6 +90,10 @@ public class CleanableEditText extends RelativeLayout {
             Field maxLengthField = styleableCls.getField("TextView_maxLength");
             int maxLengthValue = (int) maxLengthField.get(styleableCls);
             maxLength = defType.getInt(maxLengthValue, -1);
+            // drawPadding
+            Field drawPaddingField = styleableCls.getField("TextView_drawablePadding");
+            int drawablePaddingValue = (int) drawPaddingField.get(styleableCls);
+            drawPadding = defType.getDimensionPixelSize(drawablePaddingValue, 10);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {
@@ -108,7 +113,7 @@ public class CleanableEditText extends RelativeLayout {
             mLeftDrawable = mContext.getResources().getDrawable(drawLeftResId);
             mLeftDrawable.setBounds(0, 0, mLeftDrawable.getMinimumWidth(), mLeftDrawable.getMinimumHeight());
             editContent.setCompoundDrawables(mLeftDrawable, null, null, null);
-            editContent.setCompoundDrawablePadding(10);
+            editContent.setCompoundDrawablePadding(drawPadding);
         }
         if (drawRightResId != 0) {
             mRightDrawable = mContext.getResources().getDrawable(drawRightResId);
@@ -122,12 +127,7 @@ public class CleanableEditText extends RelativeLayout {
         editContent.setFilters(lengthFilters);
         editContent.setOnFocusChangeListener(new FocusChangeListenerImpl());
         editContent.addTextChangedListener(new TextWatcherImpl());
-        tvDes.setOnRightClickListener(new DrawRightTextView.OnRightClickListener() {
-            @Override
-            public void onRightBtnClick() {
-                editContent.setText("");
-            }
-        });
+        tvDes.setOnRightClickListener(() -> editContent.setText(""));
         setClearDrawableVisible(false);
     }
 
