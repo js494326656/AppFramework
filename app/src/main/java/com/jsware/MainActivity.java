@@ -1,13 +1,16 @@
 package com.jsware;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
+import com.jakewharton.scalpel.ScalpelFrameLayout;
 import com.jsware.eventtest.CallerActivity;
+import com.jsware.loggertest.LoggerTestActivity;
 import com.jsware.netedgetest.WelcomeActivity;
 import com.jsware.tickertest.TickerActivity;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -32,11 +35,16 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.ticker_demo)
     public void tickerDemo() {
-       startActivity(new Intent(this, TickerActivity.class));
+        startActivity(new Intent(this, TickerActivity.class));
     }
 
     @OnClick(R.id.navigation_demo)
     public void navigationDemo() {
-        startActivity(new Intent(this,NavigationActivity.class));
+        startActivity(new Intent(this, NavigationActivity.class));
+    }
+
+    @OnClick(R.id.logger_demo)
+    public void loggerDemo() {
+        startActivity(new Intent(this, LoggerTestActivity.class));
     }
 }

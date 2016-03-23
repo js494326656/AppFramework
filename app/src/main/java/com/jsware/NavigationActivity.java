@@ -9,8 +9,8 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
 
+import com.jakewharton.scalpel.ScalpelFrameLayout;
 import com.jsware.swiperefresh.fragment.SwipeRefreshFragment;
 
 import butterknife.Bind;
@@ -26,6 +26,8 @@ public class NavigationActivity extends ActionBarActivity {
     DrawerLayout idDrawerLayout;
 
     SwipeRefreshFragment listFragment;
+    @Bind(R.id.scalpel)
+    ScalpelFrameLayout scalpel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,10 @@ public class NavigationActivity extends ActionBarActivity {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.add(R.id.fl_content, listFragment);
         ft.commit();
+
+        scalpel.setLayerInteractionEnabled(true);
+        scalpel.setDrawViews(true);
+        scalpel.setDrawIds(true);
     }
 
     private void setupDrawerContent(NavigationView navigationView) {

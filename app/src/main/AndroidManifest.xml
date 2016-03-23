@@ -3,6 +3,7 @@
     package="com.jsware">
 
     <application
+        android:name=".JsApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -19,8 +20,10 @@
         <activity android:name=".tickertest.TickerActivity" />
         <activity android:name=".eventtest.CallerActivity" />
         <activity android:name=".eventtest.ServerActivity" />
-        <activity android:name=".NavigationActivity"
-            android:theme="@style/Base.Theme.DesignDemo"></activity>
+        <activity
+            android:name=".NavigationActivity"
+            android:theme="@style/Base.Theme.DesignDemo" />
+        <activity android:name=".loggertest.LoggerTestActivity"></activity>
     </application>
 
 </manifest>
