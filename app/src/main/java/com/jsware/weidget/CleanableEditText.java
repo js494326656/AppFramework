@@ -1,6 +1,7 @@
 package com.jsware.weidget;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
@@ -31,6 +32,7 @@ public class CleanableEditText extends RelativeLayout {
     int maxLength = -1;
     String hint = "";
     int drawPadding = 10;
+    ColorStateList textColorHint,textColor;
 
     private Drawable mLeftDrawable,mRightDrawable;
     private boolean isHasFocus;
@@ -94,6 +96,14 @@ public class CleanableEditText extends RelativeLayout {
             Field drawPaddingField = styleableCls.getField("TextView_drawablePadding");
             int drawablePaddingValue = (int) drawPaddingField.get(styleableCls);
             drawPadding = defType.getDimensionPixelSize(drawablePaddingValue, 10);
+            // hintTextColor
+            Field hintTextColorField = styleableCls.getField("TextView_textColorHint");
+            int hintTextColorValue = (int) hintTextColorField.get(styleableCls);
+            textColorHint = defType.getColorStateList(hintTextColorValue);
+            // textColor
+            Field textColorField = styleableCls.getField("TextView_textColor");
+            int textColorValue = (int) textColorField.get(styleableCls);
+            textColor = defType.getColorStateList(textColorValue);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {
@@ -123,11 +133,25 @@ public class CleanableEditText extends RelativeLayout {
         }
         editContent.setInputType(inputType);
         editContent.setHint(hint);
-        InputFilter[] lengthFilters = new InputFilter[]{new InputFilter.LengthFilter(maxLength)};
-        editContent.setFilters(lengthFilters);
+        if (textColorHint != null) {
+            editContent.setHintTextColor(textColorHint);
+        }
+        if (textColor != null) {
+            editContent.setTextColor(textColor);
+            tvDes.setTextColor(textColor);
+        }
+        if (maxLength != -1) {
+            InputFilter[] lengthFilters = new InputFilter[]{new InputFilter.LengthFilter(maxLength)};
+            editContent.setFilters(lengthFilters);
+        }
         editContent.setOnFocusChangeListener(new FocusChangeListenerImpl());
         editContent.addTextChangedListener(new TextWatcherImpl());
-        tvDes.setOnRightClickListener(() -> editContent.setText(""));
+        tvDes.setOnRightClickListener(new DrawRightTextView.OnRightClickListener() {
+            @Override
+            public void onRightBtnClick() {
+                editContent.setText("");
+            }
+        });
         setClearDrawableVisible(false);
     }
 
