@@ -46,9 +46,14 @@ public class NavigationActivity extends ActionBarActivity {
         ft.add(R.id.fl_content, listFragment);
         ft.commit();
 
-        scalpel.setLayerInteractionEnabled(true);
-        scalpel.setDrawViews(true);
-        scalpel.setDrawIds(true);
+        /**
+         * scalpel
+         *
+         */
+
+        scalpel.setLayerInteractionEnabled(false);
+        scalpel.setDrawViews(false);
+        scalpel.setDrawIds(false);
     }
 
     private void setupDrawerContent(NavigationView navigationView) {
